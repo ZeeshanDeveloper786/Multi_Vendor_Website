@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Middleware\Admin;
 use App\Models\admin as ModelsAdmin;
 use App\Models\vendor;
+use App\Models\vendorsBankDetail;
 use App\Models\vendorsBusinessDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -233,7 +234,26 @@ class AdminController extends Controller
         $vendorDetails = vendorsBusinessDetail::where('vendor_id',Auth::guard('admin')->user()->vendor_id)->first();
         // dd($vendorDetails);
     }else if($slug == 'bank'){
+        if($request->isMethod('post')){
+            $request->validate([
+                'Account_Holder_Name' => 'required|regex:/^[\pL\s\-]+$/u',
+                'bank_name' => 'required',
+                'account_number' => 'required|numeric',
+                'swift_code' => 'required',
+            ]);
+            
+            // update data in vendor table
+            vendorsBankDetail::where('vendor_id', Auth::guard('admin')->user()->vendor_id)->update([
+                'Account_Holder_Name' => $request->Account_Holder_Name,
+                'bank_name' => $request->bank_name,
+                'account_number' => $request->account_number,
+                'swift_code' => $request->swift_code,
+            ]);
+            return back()->with('success','Vendor Bank details updated successfully');
 
+        }
+        $vendorDetails = vendorsBankDetail::where('vendor_id',Auth::guard('admin')->user()->vendor_id)->first();
+        // dd($vendorDetails);
     }
     return view('admin.settings.update_vendor_details',compact('slug','vendorDetails'));
     }
