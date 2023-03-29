@@ -5,7 +5,7 @@
     <div class="content-wrapper">
       <div class="row">
         <div class="col-md-12 grid-margin">
-          
+          <h1>zeeshannnnnn</h1>
           @if (Session::has('success'))
                   <div class="alert alert-success">{{Session::get('success')}}</div>
               @endif
