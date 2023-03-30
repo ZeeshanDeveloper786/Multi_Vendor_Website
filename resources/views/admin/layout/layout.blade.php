@@ -20,7 +20,8 @@
   <link rel="stylesheet" href="{{url('admin/css/vertical-layout-light/style.css')}}">
   <!-- endinject -->
   <link rel="shortcut icon" href="{{url('admin/images/favicon.png')}}" />
-  
+  {{-- cdn for icons skydash --}}
+  <link rel="stylesheet" href="{{url('admin/vendors/mdi/css/materialdesignicons.min.css')}}">
   {{-- csrf token for ajax --}}
   <meta name="csrf-token" content="{{ csrf_token() }}">
 

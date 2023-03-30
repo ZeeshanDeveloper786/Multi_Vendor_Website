@@ -51,6 +51,13 @@ Route::prefix('/admin')->group(function(){
 
     //update vendor details, this route will work for 3 forms, vendors personal details, vendors bank details, vendor business details by using slug
     Route::match(['get', 'post'], 'update-vendor-details/{slug}',[AdminController::class,'updateVendorDetails']);
+
+    // view admins, subadmins, vendors
+    Route::get('/admins/{type?}',[AdminController::class,'adminsManagement']);
+    
+    // view vendor details
+    Route::get('view-vendor-details/{id}',[AdminController::class,'viewVendorsDetails']);
+    
     //Admin logout
     Route::get('logout',[AdminController::class,'logout'])->name('adminlogout');
     });

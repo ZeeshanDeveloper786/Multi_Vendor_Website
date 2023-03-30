@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class vendor extends Model
 {
     use HasFactory;
+
+    public function admin(){
+        return $this->hasOne(admin::class);
+     }
 }

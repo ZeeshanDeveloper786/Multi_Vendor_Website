@@ -258,6 +258,27 @@ class AdminController extends Controller
     return view('admin.settings.update_vendor_details',compact('slug','vendorDetails'));
     }
 
+    public function adminsManagement($type=null){
+        if(!empty ($type)){
+            // dd($type);
+        $adminsData = ModelsAdmin::where('type',$type)->get();
+        $title = ucfirst($type).'s';
+        
+        }else{
+            $title = 'All Admins/Subadmins/vendors';
+            $adminsData = ModelsAdmin::all();
+        }
+
+        return view('admin.admins.admin',compact('adminsData','title'));
+    }
+
+    public function viewVendorsDetails($id){
+        $vendorDetails = ModelsAdmin::with('vendorPersonal','vendorBusiness','vendorBank')->where('id',$id)->first();
+        // $abc = vendorsBusinessDetail::with('admin')->get();
+        return view('admin.admins.view-vendor-details',compact('vendorDetails'));
+
+    }
+
     public function logout(){
         Auth::guard('admin')->logout();
         return redirect('admin/login');

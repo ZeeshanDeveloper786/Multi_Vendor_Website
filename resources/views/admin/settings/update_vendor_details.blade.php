@@ -369,7 +369,6 @@
                                   <label for="swift_code">Swift Code</label>
                                   <input type="text" name="swift_code" class="form-control" id="swift_code"
                                       placeholder="Enter shop city" value="{{ $vendorDetails->swift_code }}"
-                                      
                                       required>
                                   <span class="text-danger">
                                       @error('swift_code')
