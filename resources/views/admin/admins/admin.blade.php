@@ -41,7 +41,8 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($adminsData as $data)    
+                                        @foreach ($adminsData as $data)   
+                                         
                                         <tr>
                                             <td>
                                                 {{$data->id}}
@@ -63,11 +64,12 @@
                                             </td>
                                             <td>
                                                 @if ($data->status == 1)
-
-                                                <i style="font-size: 25px;" class="mdi mdi-bookmark-check"></i>
+                                                <a href="#" class="updateAdminStatus" id="{{$data->id}}">
+                                                <i style="font-size: 25px;" class="mdi mdi-bookmark-check" status="Active"></i></a>
                                                 
                                                 @else
-                                                <i style="font-size: 25px;" class="mdi mdi-bookmark-outline"></i>
+                                                <a href="#" class="updateAdminStatus" id="{{$data->id}}">
+                                                <i style="font-size: 25px;" class="mdi mdi-bookmark-outline" status="Inactive"></i></a>
                                                 @endif
                                             </td>
                                             <td>
