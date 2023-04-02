@@ -214,11 +214,6 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="vendor_name">Name</label>
-                                        <input type="text" name="vendor_name" class="form-control" id="vendor_name"
-                                            placeholder="Enter Name" value="{{$vendorDetails->vendorBank->name }}" readonly>
-                                    </div>
-                                    <div class="form-group">
                                         <label for="vendor_address">Bank Name</label>
                                         <input type="text" name="vendor_address" class="form-control" id="vendor_address"
                                             placeholder="Enter Address" value="{{$vendorDetails->vendorBank->bank_name }}" readonly>
