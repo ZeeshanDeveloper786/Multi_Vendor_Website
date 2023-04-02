@@ -274,9 +274,30 @@ class AdminController extends Controller
 
     public function viewVendorsDetails($id){
         $vendorDetails = ModelsAdmin::with('vendorPersonal','vendorBusiness','vendorBank')->where('id',$id)->first();
-        // $abc = vendorsBusinessDetail::with('admin')->get();
+        // $abc = vendor::with('admin')->get();
+        // return $abc;
         return view('admin.admins.view-vendor-details',compact('vendorDetails'));
 
+    }
+
+    public function AdminStatusUpdate(Request $request){
+        // dd($request);
+        // Admin_id: 1
+        // Status: Active
+        // dd($request->Admin_id);
+        if($request->Status == 'Active'){
+           $status = 0;
+        }else{
+            $status = 1;
+        }
+        
+        ModelsAdmin::where('id',$request->Admin_id)->update([
+            'status'=> $status
+        ]);
+
+        // dd($test);
+        
+        return response()->json(['status'=>$status, 'adminID' => $request->Admin_id]);
     }
 
     public function logout(){
