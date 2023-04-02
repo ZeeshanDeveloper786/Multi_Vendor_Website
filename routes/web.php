@@ -57,6 +57,9 @@ Route::prefix('/admin')->group(function(){
     
     // view vendor details
     Route::get('view-vendor-details/{id}',[AdminController::class,'viewVendorsDetails']);
+
+    // udate admin status 
+    Route::post('admin/update-admin-status',[AdminController::class,'AdminStatusUpdate'])->name('StatusUpdate');
     
     //Admin logout
     Route::get('logout',[AdminController::class,'logout'])->name('adminlogout');
