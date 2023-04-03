@@ -1,0 +1,15 @@
+.customStyle{
+    background-color: #fff;   
+    list-style-type: none;
+    border-radius: 0px;
+}
+.custom-nav:hover{
+    background-color: #4B49AC;
+    color: #ffffff!important;
+    /* padding: 0.8125rem 1.937rem 0.8125rem 1rem; */
+}
+
+.active{
+    background-color: #4B49AC;
+    color: #ffffff!important;
+}

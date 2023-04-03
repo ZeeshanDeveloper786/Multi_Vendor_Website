@@ -101,8 +101,16 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="vendor_country">Country</label>
-                                        <input type="text" name="vendor_country" class="form-control" id="vendor_country"
-                                            placeholder="Enter Country" value="{{ $vendorDetails->country }}" required>
+                                        
+                                            <select name="vendor_country" id="vendor_country" class="form-control">
+                                                <option value="">Select Country</option>
+                                                @foreach ($countries as $country)
+                                                <option value="{{$country->name}}" @if ($country->name == $vendorDetails->country)
+                                                    selected 
+                                                @endif>{{$country->name}}</option>
+                                                @endforeach
+                                            </select>
+
                                         <span class="text-danger">
                                             @error('vendor_country')
                                                 {{ $message }}
@@ -215,9 +223,15 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="shop_country">Shop Country</label>
-                                        <input type="text" name="shop_country" class="form-control" id="shop_country"
-                                            placeholder="Enter Shop Country" value="{{ $vendorDetails->shop_country }}"
-                                            required>
+                                            <select name="shop_country" id="shop_country" class="form-control">
+                                                <option value="">Select Country</option>
+                                                @foreach ($countries as $country)
+                                                <option value="{{$country->name}}" @if ($country->name == $vendorDetails->shop_country)
+                                                    selected 
+                                                @endif>{{$country->name}}</option>
+                                                @endforeach
+                                            </select>
+
                                         <span class="text-danger">
                                             @error('shop_country')
                                                 {{ $message }}

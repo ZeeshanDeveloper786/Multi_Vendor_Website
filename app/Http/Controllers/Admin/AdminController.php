@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Middleware\Admin;
 use App\Models\admin as ModelsAdmin;
+use App\Models\Country;
 use App\Models\vendor;
 use App\Models\vendorsBankDetail;
 use App\Models\vendorsBusinessDetail;
@@ -12,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Image;
+use Session;
 
 class AdminController extends Controller
 {
@@ -167,6 +169,8 @@ class AdminController extends Controller
                 'pincode' => $request->vendor_pincode,
                 'mobile' => $request->vendor_mobile,
             ]);
+
+            
             return back()->with('success','Vendor details updated successfully');
 
         }
@@ -255,7 +259,11 @@ class AdminController extends Controller
         $vendorDetails = vendorsBankDetail::where('vendor_id',Auth::guard('admin')->user()->vendor_id)->first();
         // dd($vendorDetails);
     }
-    return view('admin.settings.update_vendor_details',compact('slug','vendorDetails'));
+
+    // countries for dropdown
+    $countries = Country::where('status',1)->get();
+
+    return view('admin.settings.update_vendor_details',compact('slug','vendorDetails','countries'));
     }
 
     public function adminsManagement($type=null){

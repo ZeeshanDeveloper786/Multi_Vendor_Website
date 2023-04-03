@@ -1,4 +1,8 @@
 $(document).ready(function(){
+    // $('.nav-item').removeClass('active');
+    // $('.nav-link').removeClass('active');
+
+
     //check admin password is correct or not
     $('#current_password').mouseout(function(){
         var current_password = $('#current_password').val();

@@ -22,9 +22,13 @@
   <link rel="shortcut icon" href="{{url('admin/images/favicon.png')}}" />
   {{-- cdn for icons skydash --}}
   <link rel="stylesheet" href="{{url('admin/vendors/mdi/css/materialdesignicons.min.css')}}">
+  {{-- custom css --}}
+  <link rel="stylesheet" href="{{url('admin/css/custom.css')}}">
   {{-- csrf token for ajax --}}
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
+
+  
 </head>
 <body>
   <div class="container-scroller">
@@ -68,7 +72,7 @@
   <!-- End custom js for this page-->
   {{-- custom js file --}}
   <script src="{{url('admin/js/custom.js')}}"></script>
-  {{-- custom js file end --}}
+  {{-- custom CSS --}}
 </body>
 
 </html>
