@@ -267,7 +267,7 @@ class AdminController extends Controller
     }
 
     public function adminsManagement($type=null){
-        if(!empty ($type)){
+        if(!empty ($type !== 'all')){
             // dd($type);
         $adminsData = ModelsAdmin::where('type',$type)->get();
         $title = ucfirst($type).'s';

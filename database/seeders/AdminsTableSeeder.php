@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Admin;
+use Hash;
 
 class AdminsTableSeeder extends Seeder
 {
@@ -16,7 +17,8 @@ class AdminsTableSeeder extends Seeder
     public function run()
     {
         $adminRecords = [
-            ['id'=>2,'name'=>'rehman','type'=>'vendor','vendor_id'=>1,'mobile'=>'03449857764','email'=>'rehman@gmail.com','password'=>'$2a$12$yyhUZCStmi0oZJXjf1hC6OvIheSANnxLHsk17ngYYeUIT5yQNttK.','image'=>'','status'=>0]
+            ['id'=>1,'name'=>'zeeshan','type'=>'admin','vendor_id'=>0,'mobile'=>'03449857764','email'=>'admin@gmail.com','password'=>Hash::make(12345678),'image'=>'','status'=>1],
+            ['id'=>2,'name'=>'rehman','type'=>'vendor','vendor_id'=>1,'mobile'=>'03449857764','email'=>'rehman@gmail.com','password'=>Hash::make(12345678),'image'=>'','status'=>1]
         ];
         Admin::insert($adminRecords);
     }

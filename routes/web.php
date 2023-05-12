@@ -3,6 +3,12 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\categoryController;
+use App\Http\Controllers\Admin\sectionController;
+use App\Http\Controllers\Admin\brandController;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,6 +70,37 @@ Route::prefix('/admin')->group(function(){
     //Admin logout
     Route::get('logout',[AdminController::class,'logout'])->name('adminlogout');
     });
+
+    // section
+    Route::get('section' , [sectionController::class,'sectionsDisplay']);
+    //update-section-status
+    Route::post('admin/update-section-status',[sectionController::class,'updateSection']);
+    // Delete section
+    Route::post('admin/delete-section',[sectionController::class,'deleteSection']);
+    // Add, edit Section
+    Route::match(['get','post'],'admin/add-edit-section/{id?}',[sectionController::class,'addEditSection']);
+
+    // Display Category Table/page
+    Route::get('/categories',[categoryController::class,'DisplayCategory']);
+    //update-category-status
+    Route::post('admin/update-category-status',[categoryController::class,'updateCategoryStatus']);
+    //delete-category
+    Route::post('admin/delete-category',[categoryController::class,'deleteCategory']);
+    // Add, edit Category
+    Route::match(['get','post'],'admin/add-edit-category/{id?}',[categoryController::class,'addEditcategory']);
+    // append categories level
+    Route::get('/append-categories-level',[categoryController::class,'appendCategoryLevel']);
+    //delete-category
+    Route::post('admin/delete-category-image',[categoryController::class,'deleteCategoryImage']);
+
+    // Brands
+    Route::get('/brands' , [brandController::class,'brandsDisplay']);
+    //update-brand-status
+    Route::post('admin/update-brand-status',[brandController::class,'updatebrand']);
+    // Delete brand
+    Route::post('admin/delete-brand',[brandController::class,'deletebrand']);
+    // Add, edit brand
+    Route::match(['get','post'],'admin/add-edit-brand/{id?}',[brandController::class,'addEditBrand']);
 
 
 });

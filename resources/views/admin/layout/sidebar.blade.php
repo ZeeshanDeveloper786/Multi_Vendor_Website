@@ -86,6 +86,25 @@
                     </ul>
                 </div>
             </li>
+            {{-- catalogue --}}
+            <li class="nav-item">
+                <a class="nav-link custom-nav" data-toggle="collapse" href="#catMgmt" aria-expanded="false" aria-controls="catMgmt">
+                    <i class="icon-layout menu-icon"></i>
+                    <span class="menu-title">Catalogue Managment</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="catMgmt">
+                    <ul class="flex-column sub-menu customStyle px-0">
+                        <li class="nav-item {{ (request()->is('admin/section')) ? 'active' : '' }}"> <a class="nav-link custom-nav" href="{{url('admin/section')}}">Section</a></li>
+                        <li class="nav-item"> <a class="nav-link custom-nav {{ (request()->is('admin/categories')) ? 'active' : '' }}" href="{{url('admin/categories')}}">Categories</a>
+                        </li>
+                        <li class="nav-item"> <a class="nav-link custom-nav {{ (request()->is('admin/brands')) ? 'active' : '' }}" href="{{url('admin/brands')}}">Brands</a>
+                        </li>
+                        <li class="nav-item"> <a class="nav-link custom-nav {{ (request()->is('admin/Categories')) ? 'active' : '' }}" href="{{url('admin/Products')}}">Products</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
          @endif
          <li class="nav-item">
              <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false"
